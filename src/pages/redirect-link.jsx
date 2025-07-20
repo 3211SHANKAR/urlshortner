@@ -22,9 +22,12 @@ const RedirectLink = () => {
   useEffect(() => {
     if (!loading && data) {
       fnStats();
+      if (data?.original_url) {
+        window.location.href = data.original_url;
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading]);
+  }, [loading, data]);
 
   if (loading || loadingStats) {
     return (
